@@ -608,7 +608,9 @@ class Curl
     {
         //set request type and writer function
         $this->setOption(CURLOPT_CUSTOMREQUEST, strtoupper($method));
-
+        //add for no SSL certificate
+        $this->setOption(CURLOPT_SSL_VERIFYPEER, false);
+        $this->setOption(CURLOPT_SSL_VERIFYHOST, false);
         //check if method is head and set no body
         if ($method === 'HEAD') {
             $this->setOption(CURLOPT_NOBODY, true);
